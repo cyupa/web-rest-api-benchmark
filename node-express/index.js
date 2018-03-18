@@ -9,4 +9,4 @@ app.listen(3000, () => {
 app.get('/hello', controller.hello);
 app.get('/compute', controller.compute);
 app.get('/countries', controller.countries);
-app.get('/users', controller.users);
+// app.get('/users', controller.users);

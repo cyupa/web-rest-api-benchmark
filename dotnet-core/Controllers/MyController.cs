@@ -16,7 +16,7 @@ namespace dotnet_core.Controllers
         public MyController(ApplicationDbContext context)
         {
             this.context = context;
-        } 
+        }
 
         [HttpGet]
         [Route("/hello")]
@@ -32,7 +32,7 @@ namespace dotnet_core.Controllers
             int x = 0, y = 1, z, max;
 
             Random r = new Random();
-            max = 10000 + r.Next(500);
+            max = 10000;
 
             for (int i = 0; i <= max; i++) {
                 z = x + y;
@@ -50,20 +50,20 @@ namespace dotnet_core.Controllers
             return context.Country.ToList();
         }
 
-        [HttpGet]
-        [Route("/users")]
-        public object users()
-        {
-            return context.UserCountryMapping
-                    .Where(uc => uc.country.name.Equals("France"))
-                    .Select(uc => new {
-                        id = uc.user.id,
-                        firstName = uc.user.firstName,
-                        lastName = uc.user.lastName,
-                        email = uc.user.email,
-                        countries = uc.user.userCountryMappings.Select(m => m.country)
-                    })
-                    .ToList();
-        }
+        // [HttpGet]
+        // [Route("/users")]
+        // public object users()
+        // {
+        //     return context.UserCountryMapping
+        //             .Where(uc => uc.country.name.Equals("France"))
+        //             .Select(uc => new {
+        //                 id = uc.user.id,
+        //                 firstName = uc.user.firstName,
+        //                 lastName = uc.user.lastName,
+        //                 email = uc.user.email,
+        //                 countries = uc.user.userCountryMappings.Select(m => m.country)
+        //             })
+        //             .ToList();
+        // }
     }
 }

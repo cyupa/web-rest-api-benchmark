@@ -11,7 +11,7 @@ def compute(req):
 	x = 0
 	y = 1
 
-	max = 10000 + randint(0, 500)
+	max = 10000
 
 	for i in range(max):
 		z = x + y
@@ -26,10 +26,10 @@ def countries(req):
 	data = CountrySerializer(data, many=True).data
 
 	return JsonResponse({ 'data': list(data) })
-
-
-def users(req):
-	data = User.objects.filter(usercountrymapping__countries__name='France').all()
-	data = UserSerializer(data, many=True).data
-
-	return JsonResponse({ 'data': list(data) })
+#
+#
+# def users(req):
+# 	data = User.objects.filter(usercountrymapping__countries__name='France').all()
+# 	data = UserSerializer(data, many=True).data
+#
+# 	return JsonResponse({ 'data': list(data) })

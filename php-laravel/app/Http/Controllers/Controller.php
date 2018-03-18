@@ -8,7 +8,7 @@ use App\Country;
 
 class Controller extends BaseController
 {
-    public function hello() 
+    public function hello()
     {
     	return response()->json(['hello' => 'world']);
     }
@@ -17,7 +17,7 @@ class Controller extends BaseController
     {
     	$x = 0; $y = 1;
 
-        $max = 10000 + rand(0, 500);
+        $max = 10000;
 
     	for ($i = 0; $i <= $max; $i++) {
     	    $z = $x + $y;
@@ -35,14 +35,14 @@ class Controller extends BaseController
     	return response()->json($data);
     }
 
-    public function users()
-    {
-    	$data = User::whereHas('countries', function($query) {
-    					$query->where('name', 'France');
-    				})
-    				->with('countries')
-    				->get();
-
-    	return response()->json($data);
-    }
+    // public function users()
+    // {
+    // 	$data = User::whereHas('countries', function($query) {
+    // 					$query->where('name', 'France');
+    // 				})
+    // 				->with('countries')
+    // 				->get();
+    //
+    // 	return response()->json($data);
+    // }
 }

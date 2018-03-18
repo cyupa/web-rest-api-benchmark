@@ -22,52 +22,52 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 //@ComponentScan("model")
 @SpringBootApplication
 public class Application {
-	
+
 	@Autowired
 	private Environment env;
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
-    
+
     @Bean
     public LocalSessionFactoryBean sessionFactory() {
        LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
        sessionFactory.setDataSource(restDataSource());
        sessionFactory.setPackagesToScan(new String[] { "model" });
        sessionFactory.setHibernateProperties(hibernateProperties());
-  
+
        return sessionFactory;
     }
-  
+
     @Bean
     public DataSource restDataSource() {
        BasicDataSource dataSource = new BasicDataSource();
        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
        dataSource.setUrl("jdbc:mysql://localhost:3306/benchmark");
        dataSource.setUsername("root");
-       dataSource.setPassword("");
-  
+       dataSource.setPassword("Passw0rd-123.");
+
        return dataSource;
     }
-  
+
     @Bean
     @Autowired
     public HibernateTransactionManager transactionManager(
       SessionFactory sessionFactory) {
-   
+
        HibernateTransactionManager txManager
         = new HibernateTransactionManager();
        txManager.setSessionFactory(sessionFactory);
-  
+
        return txManager;
     }
-  
+
     @Bean
     public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
        return new PersistenceExceptionTranslationPostProcessor();
     }
-  
+
     Properties hibernateProperties() {
        return new Properties() {
           {

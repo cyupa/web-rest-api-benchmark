@@ -1,7 +1,7 @@
 const Country = require('../Models/Country');
 const User = require('../Models/User');
 
-class Controller 
+class Controller
 {
 	hello(req, res) {
 		return res.json({ hello: 'world' });
@@ -10,7 +10,7 @@ class Controller
 	compute(req, res) {
 		let x = 0, y = 1;
 
-		let max = 10000 + Math.random() * 500;
+		let max = 10000;
 
 		for (let i = 0; i <= max; i++) {
 		    let z = x + y;
@@ -27,19 +27,19 @@ class Controller
 		return res.json({ data });
 	}
 
-	async users(req, res) {
-		let data = await User.query(q => {
-				q.innerJoin('UserCountryMapping', 'User.id', 'UserCountryMapping.userId');
-				q.innerJoin('Country', 'UserCountryMapping.countryId', 'Country.id');
-				q.groupBy('User.id');
-				q.where('Country.name', 'France');
-			})
-			.fetchAll({
-			 	withRelated: ['countries']
-			})
-
-		return res.json({ data });
-	}
+	// async users(req, res) {
+	// 	let data = await User.query(q => {
+	// 			q.innerJoin('UserCountryMapping', 'User.id', 'UserCountryMapping.userId');
+	// 			q.innerJoin('Country', 'UserCountryMapping.countryId', 'Country.id');
+	// 			q.groupBy('User.id');
+	// 			q.where('Country.name', 'France');
+	// 		})
+	// 		.fetchAll({
+	// 		 	withRelated: ['countries']
+	// 		})
+	//
+	// 	return res.json({ data });
+	// }
 }
 
 module.exports = new Controller();

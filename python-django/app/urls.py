@@ -5,5 +5,5 @@ urlpatterns = [
     url(r'^hello', views.hello),
     url(r'^compute', views.compute),
     url(r'^countries', views.countries),
-    url(r'^users', views.users),
+    # url(r'^users', views.users),
 ]

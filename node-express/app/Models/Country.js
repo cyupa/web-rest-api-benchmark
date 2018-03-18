@@ -7,9 +7,9 @@ class Country extends Model
 		return 'Country';
 	}
 
-	users() {
-		return this.belongsToMany('User', 'UserCountryMapping', 'countryId', 'userId');
-	}
+	// users() {
+	// 	return this.belongsToMany('User', 'UserCountryMapping', 'countryId', 'userId');
+	// }
 }
 
 module.exports = bookshelf.model('Country', Country);

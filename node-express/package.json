@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mihaigeorge/web-rest-api-benchmark.git"
+    "url": "git+https://github.com/cyupa/web-rest-api-benchmark.git"
   },
   "author": "Mihai Cracan",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/mihaigeorge/web-rest-api-benchmark/issues"
+    "url": "https://github.com/cyupa/web-rest-api-benchmark/issues"
   },
-  "homepage": "https://github.com/mihaigeorge/web-rest-api-benchmark#readme",
+  "homepage": "https://github.com/cyupa/web-rest-api-benchmark#readme",
   "dependencies": {
     "bookshelf": "^0.10.3",
     "express": "^4.15.3",

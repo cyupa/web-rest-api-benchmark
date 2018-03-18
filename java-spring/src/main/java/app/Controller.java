@@ -20,9 +20,9 @@ import model.User;
 
 @RestController
 public class Controller {
-	
+
 	private SessionFactory sessionFactory;
-	
+
 	public Controller(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
@@ -31,23 +31,23 @@ public class Controller {
     public String hello() throws JSONException {
         return new JSONObject().put("hello", "world").toString();
     }
-    
+
     @RequestMapping(value = "/compute", produces = "application/json")
     public String compute() throws JSONException {
         long x = 0, y = 1, z, max;
-        
+
         Random r = new Random();
-        max = 10000 + r.nextInt(500);
-        
+        max = 10000;
+
         for (int i = 0; i <= max; i++) {
         	z = x + y;
 		    x = y;
 		    y = z;
 		}
-        
+
         return new JSONObject().put("status", "done").toString();
     }
-    
+
     @RequestMapping(value = "/countries", produces = "application/json")
     @Transactional
     public List<Country> countries() throws JSONException {
@@ -56,15 +56,15 @@ public class Controller {
     			.list();
     	return data;
     }
-    
-    @RequestMapping(value = "/users", produces = "application/json")
-    @Transactional
-    public List<User> users() throws JSONException {
-    	List<User> data = (List<User>) sessionFactory.getCurrentSession()
-    			.createCriteria(User.class)
-    			.createAlias("countries", "countriesAlias")
-    			.add(Restrictions.eq("countriesAlias.name", "France"))
-    			.list();
-    	return data;
-    }
+
+    // @RequestMapping(value = "/users", produces = "application/json")
+    // @Transactional
+    // public List<User> users() throws JSONException {
+    // 	List<User> data = (List<User>) sessionFactory.getCurrentSession()
+    // 			.createCriteria(User.class)
+    // 			.createAlias("countries", "countriesAlias")
+    // 			.add(Restrictions.eq("countriesAlias.name", "France"))
+    // 			.list();
+    // 	return data;
+    // }
 }
